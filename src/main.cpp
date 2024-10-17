@@ -29,7 +29,9 @@ int main(int argc, char ** argv) {
 
     int spaceNumbers[spaceDimensionality];
     enterSpaceNumbers(spaceNumbers, spaceDimensionality);
-    printSpaceNumbers(spaceNumbers, spaceDimensionality);
+    for(int i = 0, int j = 1; i < spaceDimensionality, ; i++) {
+
+    }
 
     return 0;
 }
