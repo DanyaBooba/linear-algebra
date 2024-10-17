@@ -1,5 +1,17 @@
 void printHelp();
 
+void printSpaceNumbers(int spaceNumbers[], int len) {
+    for(int i = 0; i < len; i++) {
+        cout << spaceNumbers[i] << endl;
+    }
+}
+
+void enterSpaceNumbers(int spaceNumbers[], int len) {
+    for(int i = 0; i < len; i++) {
+        spaceNumbers[i] = i;
+    }
+}
+
 void enterValue(string placeholder, int * data, int min=INT_MIN, int max=INT_MAX) {
     while(1) {
         cout << placeholder << ":" << endl << "> ";
