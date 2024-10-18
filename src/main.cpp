@@ -29,9 +29,18 @@ int main(int argc, char ** argv) {
 
     int spaceNumbers[spaceDimensionality];
     enterSpaceNumbers(spaceNumbers, spaceDimensionality);
-    for(int i = 0, int j = 1; i < spaceDimensionality, ; i++) {
 
-    }
+    //
+    // Корни константы
+    //
+
+    printConstantRoots(spaceNumbers, spaceDimensionality);
+
+    //
+    // Корни 1 степени
+    //
+
+    printRootsOfDegree1(spaceNumbers, spaceDimensionality);
 
     return 0;
 }
