@@ -21,7 +21,7 @@ int main(int argc, char ** argv) {
     // enterValue("Введите размерность пространства [2-100]", &spaceDimensionality, 2, 100);
 
     int maximumDegree = 2;
-    // enterValue("Введите максимальную степень [0-10]", &spaceDimensionality, 0, 10);
+    // enterValue("Введите максимальную степень [0-3]", &spaceDimensionality, 0, 3);
 
     //
     // Начало работы программы
@@ -34,13 +34,23 @@ int main(int argc, char ** argv) {
     // Корни константы
     //
 
-    printConstantRoots(spaceNumbers, spaceDimensionality);
+    printRootsConstant(spaceNumbers, spaceDimensionality);
 
     //
     // Корни 1 степени
     //
 
-    printRootsOfDegree1(spaceNumbers, spaceDimensionality);
+    if(maximumDegree >= 1) {
+        printRootsOfDegree1(spaceNumbers, spaceDimensionality);
+    }
+
+    //
+    // Корни 2 степени
+    //
+
+    if(maximumDegree >= 2) {
+        printRootsOfDegree2(spaceNumbers, spaceDimensionality);
+    }
 
     return 0;
 }
