@@ -67,6 +67,45 @@ void findRootDegree2WithoutX(int * root1, int * root2, bool * hasRoot, int space
     }
 }
 
+void findRootDegree2X(int * root1, int * root2, bool * hasRoot, int spaceNumbers[], int len, int a = 1, int b = 1, int c = 0) {
+    // ax² + bx + c = 0
+    int tryFind = -1;
+    bool has = false;
+    for(int i = 0; i < len; i++) {
+        tryFind = spaceNumbers[i];
+        int ax = mult(a, mult(tryFind, tryFind, len), len);
+        int bx = mult(b, mult(tryFind, tryFind, len), len);
+        int s = sum(sum(ax, bx, len), b, len);
+        if(s == 0) {
+            has = true;
+            *hasRoot = true;
+            *root1 = tryFind;
+            break;
+        }
+    }
+
+    if(has == false) {
+        *hasRoot = false;
+    }
+
+    has = false;
+    for(int i = (*root1) + 1; i < len; i++) {
+        tryFind = spaceNumbers[i];
+        int ax = mult(a, mult(tryFind, tryFind, len), len);
+        int bx = mult(b, mult(tryFind, tryFind, len), len);
+        int s = sum(sum(ax, bx, len), b, len);
+        if(s == 0) {
+            has = true;
+            *root2 = tryFind;
+            break;
+        }
+    }
+
+    if(has == false) {
+        *root2 = *root1;
+    }
+}
+
 //
 // Корни
 //
@@ -104,6 +143,7 @@ void printRootsOfDegree1(int spaceNumbers[], int len) {
 void printRootsOfDegree2(int spaceNumbers[], int len) {
     cout << "Корни 2 степени: " << endl;
 
+    // ax^2 = 0
     for(int a = 1; a < len; a++) {
         bool hasRoots = true;
         int root1 = -1;
@@ -119,12 +159,43 @@ void printRootsOfDegree2(int spaceNumbers[], int len) {
         cout << endl;
     }
 
+    // ax^2 + b = 0
     for(int a = 1; a < len; a++) {
         for(int b = 1; b < len; b++) {
+            bool hasRoots = true;
+            int root1 = -1;
+            int root2 = -1;
+            findRootDegree2WithoutX(&root1, &root2, &hasRoots, spaceNumbers, len, a, b);
             cout << a << "x² + " << b << " = 0; ";
+            if(hasRoots) {
+                cout << "x = {" << root1 << ", " << root2 << "}";
+            }
+            else {
+                cout << "нет корней";
+            }
             cout << endl;
         }
     }
+
+    // ax^2 + bx = 0
+    for(int a = 1; a < len; a++) {
+        for(int b = 1; b < len; b++) {
+            bool hasRoots = true;
+            int root1 = -1;
+            int root2 = -1;
+            findRootDegree2X(&root1, &root2, &hasRoots, spaceNumbers, len, a, b);
+            cout << a << "x² + " << b << " = 0; ";
+            if(hasRoots) {
+                cout << "x = {" << root1 << ", " << root2 << "}";
+            }
+            else {
+                cout << "нет корней";
+            }
+            cout << endl;
+        }
+    }
+
+    // ax^2 + bx + c = 0
 
     cout << endl << endl;
 }

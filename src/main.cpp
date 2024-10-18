@@ -21,7 +21,7 @@ int main(int argc, char ** argv) {
     // enterValue("Введите размерность пространства [2-100]", &spaceDimensionality, 2, 100);
 
     int maximumDegree = 2;
-    // enterValue("Введите максимальную степень [0-3]", &spaceDimensionality, 0, 3);
+    // enterValue("Введите максимальную степень [0-2]", &spaceDimensionality, 0, 2);
 
     //
     // Начало работы программы
